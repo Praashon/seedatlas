@@ -1,0 +1,32 @@
+{
+  "name": "seedatlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "workspaces": ["apps/web", "packages/*"],
+  "scripts": {
+    "dev": "npm run dev --workspace @seedatlas/web",
+    "build": "npm run build --workspace @seedatlas/web",
+    "typecheck": "tsc -p apps/web/tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:offline": "playwright test --config playwright.production.config.ts",
+    "format:check": "prettier --check apps/web/src packages docs README.md",
+    "format": "prettier --write apps/web/src packages docs README.md",
+    "lint": "eslint apps/web/src packages",
+    "build:wasm": "node scripts/build-wasm.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.61.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "eslint": "10.13.0",
+    "typescript-eslint": "8.72.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
+  }
+}

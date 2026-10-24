@@ -1,0 +1,12 @@
+node_modules/
+dist/
+target/
+.env
+.env.local
+.tools/
+.research/
+.artifacts/
+native/cubiomes/.git/
+*.log
+playwright-report/
+test-results/

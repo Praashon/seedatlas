@@ -1,0 +1,95 @@
+import { expect, test } from '@playwright/test';
+
+test('computes locally, saves independent worlds and preserves waypoint progress', async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: 'World explorer.' })).toBeVisible();
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await expect(page.locator('.discovery-card').first()).toBeVisible();
+  await expect(page.getByText('Drawing your world…')).toBeHidden();
+  await page.screenshot({ path: `.artifacts/${testInfo.project.name}-explorer.png`, fullPage: true });
+  await page.getByRole('button', { name: 'Save this world' }).click();
+  await page.getByRole('textbox', { name: 'World name' }).fill('My test expedition');
+  await page.getByRole('button', { name: 'Save world', exact: true }).last().click();
+  await expect(page.getByRole('status')).toContainText('World saved');
+  await page.locator('.discovery-card').first().click();
+  await page.getByRole('button', { name: 'Mark visited' }).click();
+  await expect(page.getByRole('button', { name: 'Undo visited' })).toBeVisible();
+  await page.getByRole('button', { name: 'Save waypoint', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Waypoint name' }).fill('First stop');
+  await page.getByRole('button', { name: 'Save waypoint', exact: true }).last().click();
+  await expect(page.getByRole('status')).toContainText('Waypoint saved');
+  await page.reload();
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: 'Open navigation' }).click();
+  await page.getByRole('button', { name: 'My worlds', exact: true }).click();
+  await page.getByRole('button', { name: /My test expedition/ }).click();
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await page.locator('.discovery-card').first().click();
+  await expect(page.getByRole('button', { name: 'Undo visited' })).toBeVisible();
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: 'Open navigation' }).click();
+  await page.getByRole('button', { name: /Saved places/ }).click();
+  await expect(page.getByRole('heading', { name: 'First stop' })).toBeVisible();
+  await page.screenshot({ path: `.artifacts/${testInfo.project.name}-saved.png`, fullPage: true });
+  expect(errors).toEqual([]);
+});
+
+test('handles dimensions, unsupported versions and full precision seeds honestly', async ({ page }, testInfo) => {
+  await page.goto('/');
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await page.getByRole('button', { name: 'Nether', exact: true }).click();
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await expect(page.locator('.discovery-card').filter({ hasText: 'Village' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'The End', exact: true }).click();
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await expect(page.getByRole('button', { name: 'End city', exact: true })).toBeVisible();
+  await page.getByRole('combobox', { name: 'Game version' }).selectOption('26.3');
+  await page.getByRole('button', { name: 'Explore seed' }).click();
+  await expect(page.getByRole('alert')).toContainText('Dappled forests');
+  await expect(page.locator('.discovery-card')).toHaveCount(0);
+  await page.getByRole('combobox', { name: 'Game version' }).selectOption('1.18.2');
+  await page.getByRole('textbox', { name: 'World seed' }).fill('-9223372036854775808');
+  await page.getByRole('button', { name: 'Explore seed' }).click();
+  await expect(page.getByRole('textbox', { name: 'World seed' })).toHaveValue('-9223372036854775808');
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await page.getByRole('button', { name: 'Overworld', exact: true }).click();
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: 'Open navigation' }).click();
+  await page.getByRole('button', { name: 'Biome explorer', exact: true }).click();
+  await page.getByRole('combobox', { name: 'Biome', exact: true }).selectOption('14');
+  await page.getByRole('button', { name: 'Find nearby' }).click();
+  await expect(page.getByText(/\d+ sampled match found/)).toBeVisible();
+  await page.screenshot({ path: `.artifacts/${testInfo.project.name}-biome.png`, fullPage: true });
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+  expect(overflow).toBe(false);
+});
+
+test('keeps progress independent for two worlds with the same seed', async ({ page }, testInfo) => {
+  const navigate = async (name: string) => {
+    if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: 'Open navigation' }).click();
+    await page.getByRole('button', { name, exact: true }).click();
+  };
+  const save = async (name: string) => {
+    await page.getByRole('button', { name: 'Save this world' }).click();
+    await page.getByRole('textbox', { name: 'World name' }).fill(name);
+    await page.getByRole('button', { name: 'Save world', exact: true }).last().click();
+    await expect(page.getByRole('status')).toContainText('World saved');
+  };
+  await page.goto('/');
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await save('First world');
+  await page.locator('.discovery-card').first().click();
+  await page.getByRole('button', { name: 'Mark visited' }).click();
+  await expect(page.getByRole('button', { name: 'Undo visited' })).toBeVisible();
+  await navigate('My worlds');
+  await page.getByRole('button', { name: 'New world', exact: true }).click();
+  await save('Second world');
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await page.locator('.discovery-card').first().click();
+  await expect(page.getByRole('button', { name: 'Mark visited' })).toBeVisible();
+  await navigate('My worlds');
+  await expect(page.locator('.world-card')).toHaveCount(2);
+  await page.getByRole('button', { name: /First world/ }).click();
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await page.locator('.discovery-card').first().click();
+  await expect(page.getByRole('button', { name: 'Undo visited' })).toBeVisible();
+});
