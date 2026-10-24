@@ -73,6 +73,8 @@ const BIOMES = [
   { id: 175, name: 'Lush caves', dimension: 'overworld' },
   { id: 183, name: 'Deep dark', dimension: 'overworld' },
   { id: 174, name: 'Dripstone caves', dimension: 'overworld' },
+  { id: 187, name: 'Sulfur caves', dimension: 'overworld' },
+  { id: 186, name: 'Pale garden', dimension: 'overworld' },
   { id: 8, name: 'Nether wastes', dimension: 'nether' },
   { id: 171, name: 'Crimson forest', dimension: 'nether' },
   { id: 172, name: 'Warped forest', dimension: 'nether' },
@@ -86,7 +88,7 @@ function newWorld(): World {
     name: 'A new horizon',
     seedInput: '262',
     seed: '262',
-    version: '1.21.3',
+    version: '26.2',
     preset: 'default',
     createdAt: new Date().toISOString(),
     position: { x: 0, y: 64, z: 0 },
@@ -99,7 +101,7 @@ export function App() {
   const [world, setWorld] = useState<World>(newWorld);
   const [worlds, setWorlds] = useState<World[]>([]);
   const [seedInput, setSeedInput] = useState('262');
-  const [version, setVersion] = useState('1.21.3');
+  const [version, setVersion] = useState('26.2');
   const [position, setPosition] = useState<Position>({ x: 0, y: 64, z: 0 });
   const [dimension, setDimension] = useState<Dimension>('overworld');
   const [types, setTypes] = useState<number[]>([5, 11, 13]);
@@ -459,7 +461,7 @@ export function App() {
               <Menu size={20} />
             </button>
             <span className="breadcrumb">
-              Workspace
+              <span className="breadcrumb-root">Workspace</span>
               <ChevronRight size={12} />
               <b>{pageTitle}</b>
             </span>
@@ -709,11 +711,20 @@ export function App() {
                         <select
                           aria-label="Biome"
                           value={biome}
-                          onChange={(event) => setBiome(Number(event.target.value))}
+                          onChange={(event) => {
+                            const next = Number(event.target.value);
+                            setBiome(next);
+                            if ([174, 175, 183, 187].includes(next) && world.position.y > 0) {
+                              const underground = { ...world.position, y: 0 };
+                              setPosition(underground);
+                              setWorld({ ...world, position: underground });
+                            }
+                          }}
                         >
                           {BIOMES.filter(
                             (b) =>
                               b.dimension === dimension &&
+                              (![186, 187].includes(b.id) || world.version === '26.2') &&
                               !(world.version === '1.18.2' && [183, 184, 185].includes(b.id)),
                           ).map((b) => (
                             <option value={b.id} key={b.id}>
@@ -737,6 +748,12 @@ export function App() {
                         </select>
                       </label>
                       <p>Searches the nearest sampled match at Y {world.position.y}.</p>
+                      {biome === 187 && (
+                        <p>
+                          Sulfur caves are underground. Sampling starts at Y 0; adjust your position
+                          height to explore another layer.
+                        </p>
+                      )}
                     </div>
                   ) : (
                     <div className="filter-chips">
@@ -1217,9 +1234,9 @@ export function App() {
               miss patches between samples.
             </p>
             <p>
-              26.x adapters, exact ore simulation, save inspection, accounts, and the optional
-              companion are not implemented yet. No unsupported version silently uses another
-              version's generator.
+              Java 26.2 is available in the browser, including sulfur caves. Other 26.x adapters,
+              exact ore simulation, save inspection, accounts, and the optional companion are not
+              implemented yet. No unsupported version silently uses another version's generator.
             </p>
             <p>
               Your saved worlds stay on this device. Export a backup before clearing browser data.

@@ -11,4 +11,6 @@
 - [ ] Milestone 8: optional authenticated companion and precision runner.
 - [ ] Milestone 9: full production security, accessibility, deployment and performance review.
 
-Next milestone: obtain independent vanilla biome and structure fixtures, implement properly licensed 26.x browser adapters, and add bounded generation caching. Keep every capability predicted or unsupported until its reference suite passes. The optional companion is not part of ordinary browser search.
+Java 26.2 update: available through its own pinned MIT browser adapter, including sulfur-cave sampling, structure predictions and regression coverage. New worlds default to 26.2. The interface now uses a larger rem-based type scale, with 12 px minimum labels and 14–16 px primary text at standard browser defaults.
+
+Next milestone: expand independent vanilla biome and structure fixtures, implement the remaining 26.x browser adapters, and add bounded generation caching. Keep every capability predicted or unsupported until its reference suite passes. The optional companion is not part of ordinary browser search.

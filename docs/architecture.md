@@ -7,7 +7,7 @@ SeedAtlas is an offline-first static React application. The initial product is a
 - `apps/web`: Poppins UI, canvas viewport, bounded Web Worker computation, IndexedDB guest worlds and per-world progress.
 - `packages/contracts`: versioned result, world, dimension, and capability contracts.
 - `packages/generator-core`: Java-compatible seed parsing, coordinates, version registry, search validation.
-- `native/cubiomes`: pinned, unmodified MIT upstream source. `native/wasm-bindings` is our narrow C ABI. Built JS/WASM ships with the static frontend.
+- `native/cubiomes`: pinned, unmodified MIT legacy upstream source. `native/cubiomes-26` is the separately pinned MIT xpple fork for Java 26.2. `native/wasm-bindings` is our narrow C ABI with explicit structure-ID mapping. The version registry selects each binary and provenance fingerprint. Built JS/WASM ships with the static frontend.
 - `apps/api`: optional Rust/Axum service foundation. Health and capabilities only; private data endpoints wait for authenticated authorization and integration tests.
 - `precision` and `companion`: future independent adapters for exact blocks, save inspection, and live coordinates. Neither is a browser search prerequisite.
 

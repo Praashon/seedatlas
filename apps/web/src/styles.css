@@ -3,7 +3,7 @@
 }
 html {
   font-family: 'Poppins', sans-serif;
-  font-size: 13px;
+  font-size: 100%;
   color-scheme: dark;
   background: #191d19;
   --bg: #20241f;
@@ -111,12 +111,14 @@ button {
 .app-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 222px minmax(0, 1fr);
+  grid-template-columns: 260px minmax(0, 1fr);
 }
 .sidebar {
+  overflow-y: auto;
+  scrollbar-width: thin;
   position: fixed;
   inset: 0 auto 0 0;
-  width: 222px;
+  width: 260px;
   padding: 30px 16px 0;
   background: #181d19;
   border-right: 1px solid #34392e;
@@ -131,7 +133,7 @@ button {
   gap: 10px;
   margin: 0 6px 46px;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.9375rem;
   letter-spacing: -1px;
   line-height: 1.1;
   color: #e6eadc;
@@ -152,13 +154,13 @@ button {
 .brand small {
   display: block;
   margin-top: 8px;
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 2.35px;
   color: #94a083;
   font-weight: 400;
 }
 .workspace-label {
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 1.7px;
   color: #7d8974;
   margin: 0 12px 14px;
@@ -173,7 +175,7 @@ button {
   text-align: left;
   color: #a5ae9d;
   padding: 0 12px;
-  font-size: 10px;
+  font-size: 0.8125rem;
   margin-bottom: 5px;
   position: relative;
 }
@@ -194,7 +196,7 @@ button {
   background: #c6d5a1;
 }
 .nav-item small {
-  font-size: 8px;
+  font-size: 0.75rem;
   margin-left: auto;
   background: #424d35;
   padding: 2px 5px;
@@ -216,7 +218,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 1.4px;
   color: #7d8974;
   margin: 0 12px 12px;
@@ -232,7 +234,7 @@ button {
   text-align: left;
   padding: 10px 8px;
   width: 100%;
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .current-world > span:nth-child(2) {
   flex: 1;
@@ -242,7 +244,7 @@ button {
 }
 .current-world small {
   display: block;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #7d8974;
   margin-top: 4px;
 }
@@ -279,17 +281,17 @@ button {
   margin-bottom: 11px;
 }
 .note-illustration > span {
-  font-size: 13px;
+  font-size: 1.0625rem;
   padding-top: 0;
 }
 .browser-note strong {
   display: block;
-  font-size: 9px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #d6dfc6;
 }
 .browser-note p {
-  font-size: 8px;
+  font-size: 0.75rem;
   line-height: 1.9;
   color: #8f9d83;
   margin-top: 6px;
@@ -298,7 +300,7 @@ button {
   display: flex;
   gap: 5px;
   align-items: center;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #a4b78b;
   margin-top: 12px;
 }
@@ -312,7 +314,7 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .guest-profile > span:first-child {
   display: flex;
@@ -323,11 +325,11 @@ button {
   border-radius: 50%;
   background: #3b4335;
   color: #d8e2c7;
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .guest-profile small {
   display: block;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #7c8971;
   margin-top: 3px;
 }
@@ -361,7 +363,7 @@ main {
   align-items: center;
   gap: 14px;
   color: var(--faint);
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .breadcrumb b {
   font-weight: 400;
@@ -374,7 +376,7 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 8px;
+  font-size: 0.75rem;
   color: #a2ad94;
 }
 .local-badge > span {
@@ -404,7 +406,7 @@ main {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: 9px;
+  font-size: 0.75rem;
   border: 1px solid #566048;
   color: #c2cdb1;
   background: #30382b;
@@ -421,7 +423,7 @@ main {
   margin-bottom: 28px;
 }
 .eyebrow {
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 1.7px;
   color: var(--faint);
   font-weight: 500;
@@ -429,7 +431,7 @@ main {
 }
 .page-heading h1 {
   font-weight: 500;
-  font-size: 29px;
+  font-size: 2.375rem;
   letter-spacing: -1.1px;
   line-height: 1.4;
   margin: 5px 0;
@@ -438,7 +440,7 @@ main {
   color: var(--accent);
 }
 .page-heading p {
-  font-size: 10px;
+  font-size: 0.8125rem;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -452,7 +454,7 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 1.1px;
   color: var(--muted);
 }
@@ -471,7 +473,7 @@ main {
   border-radius: 5px;
   min-height: 36px;
   padding: 0 13px;
-  font-size: 9px;
+  font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
   line-height: 1.5;
@@ -508,7 +510,7 @@ main {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 7px;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 1.2px;
   color: var(--muted);
@@ -522,7 +524,7 @@ main {
 .seed-field input {
   width: 100%;
   padding: 0 25px 0 0;
-  font-size: 11px;
+  font-size: 0.875rem;
   letter-spacing: 0.25px;
 }
 .copy-seed {
@@ -542,7 +544,7 @@ main {
   flex: 0.5;
 }
 .version-field select {
-  font-size: 10px;
+  font-size: 0.8125rem;
   width: 100%;
 }
 .position-field {
@@ -560,14 +562,14 @@ main {
   align-items: center;
 }
 .position-field > div label > span:first-child {
-  font-size: 8px;
+  font-size: 0.75rem;
   margin: 0;
   color: var(--faint);
   letter-spacing: 0;
 }
 .position-field input {
   width: 40px;
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .generate {
   align-self: stretch;
@@ -579,7 +581,7 @@ main {
 }
 .exploration-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 293px;
+  grid-template-columns: minmax(0, 1fr) 350px;
   gap: 20px;
 }
 .map-column {
@@ -603,7 +605,7 @@ main {
   align-items: center;
   gap: 6px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 0.75rem;
   padding: 0 11px 12px;
   position: relative;
 }
@@ -623,7 +625,7 @@ main {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--faint);
   padding-top: 6px;
 }
@@ -665,7 +667,7 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 1.3px;
   background: #202c23e8;
   color: #d3dfc6;
@@ -694,7 +696,7 @@ main {
   align-items: center;
   color: #edf0d9;
   text-shadow: 0 1px 3px #142416;
-  font-size: 8px;
+  font-size: 0.75rem;
   pointer-events: none;
   gap: 0;
 }
@@ -703,7 +705,7 @@ main {
   margin: 3px 0;
 }
 .compass-bottom {
-  font-size: 6px;
+  font-size: 0.75rem;
   opacity: 0.65;
 }
 .map-message {
@@ -720,7 +722,7 @@ main {
   display: flex;
   align-items: center;
   gap: 11px;
-  font-size: 10px;
+  font-size: 0.8125rem;
   box-shadow: var(--shadow);
   text-align: center;
 }
@@ -783,7 +785,7 @@ main {
   top: 21px;
   transform: translateX(-50%);
   white-space: nowrap;
-  font-size: 7px;
+  font-size: 0.75rem;
   background: #263023e8;
   color: #e8eddc;
   border: 1px solid #879572;
@@ -848,18 +850,18 @@ main {
   z-index: 6;
 }
 .layers-popover strong {
-  font-size: 11px;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 .layers-popover label {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 9px;
+  font-size: 0.75rem;
   margin: 12px 0;
 }
 .layers-popover p {
-  font-size: 8px;
+  font-size: 0.75rem;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -867,7 +869,7 @@ main {
   position: absolute;
   bottom: 20px;
   left: 17px;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #e9efdc;
   display: flex;
   flex-direction: column;
@@ -888,7 +890,7 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 7px;
+  font-size: 0.75rem;
   background: #263024e8;
   padding: 8px 12px;
   border: 1px solid #7d8e6877;
@@ -912,7 +914,7 @@ main {
   position: absolute;
   bottom: 4px;
   right: 6px;
-  font-size: 5px;
+  font-size: 0.75rem;
   color: #e9efdc;
   opacity: 0.65;
   pointer-events: none;
@@ -921,12 +923,13 @@ main {
   margin: 0 3px;
 }
 .map-footer {
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 2px 18px;
   color: var(--faint);
-  font-size: 7px;
+  font-size: 0.75rem;
   gap: 8px;
 }
 .map-footer > div {
@@ -960,7 +963,7 @@ main {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--muted);
   padding: 0;
   white-space: nowrap;
@@ -979,12 +982,12 @@ main {
   color: #b9ca97;
 }
 .field-note strong {
-  font-size: 9px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #dce4ce;
 }
 .field-note p {
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #9aa88b;
   line-height: 1.8;
   margin-top: 4px;
@@ -996,7 +999,7 @@ main {
   align-items: center;
   gap: 8px;
   color: #a9bd8c;
-  font-size: 6px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   white-space: nowrap;
 }
@@ -1017,12 +1020,12 @@ main {
   align-items: center;
 }
 .discoveries-heading .eyebrow {
-  font-size: 6px;
+  font-size: 0.75rem;
   letter-spacing: 1.5px;
   margin-bottom: 7px;
 }
 .discoveries-heading h2 {
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: -0.25px;
   display: flex;
@@ -1030,7 +1033,7 @@ main {
   gap: 7px;
 }
 .discoveries-heading h2 > span {
-  font-size: 7px;
+  font-size: 0.75rem;
   background: #3a4330;
   border: 1px solid #535e40;
   border-radius: 3px;
@@ -1048,7 +1051,7 @@ main {
   border: 1px solid #454d3d;
   color: #8e9a82;
   padding: 5px 7px;
-  font-size: 6px;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -1077,20 +1080,20 @@ main {
 .search-options > label {
   flex: 1;
   min-width: 0;
-  font-size: 6px;
+  font-size: 0.75rem;
   letter-spacing: 1.1px;
   color: #7e8a72;
 }
 .search-options select {
   width: 100%;
   display: block;
-  font-size: 8px;
+  font-size: 0.75rem;
   color: #c0cbb1;
   padding-top: 5px;
   letter-spacing: 0;
 }
 .search-button {
-  font-size: 8px;
+  font-size: 0.75rem;
   min-height: 32px;
   padding: 0 10px;
   background: #c6d5a1;
@@ -1115,14 +1118,14 @@ main {
   align-items: center;
   border-top: 1px solid var(--line);
   padding: 11px 15px;
-  font-size: 6px;
+  font-size: 0.75rem;
   color: #839076;
 }
 .result-summary > label {
   display: flex;
   align-items: center;
   gap: 3px;
-  font-size: 6px;
+  font-size: 0.75rem;
 }
 .result-summary input {
   width: 9px;
@@ -1172,12 +1175,12 @@ main {
   display: flex;
   gap: 4px;
   align-items: center;
-  font-size: 9px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #d6dfc9;
 }
 .discovery-copy > span {
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #a2af92;
   display: block;
   margin-top: 5px;
@@ -1189,7 +1192,7 @@ main {
   margin: 0 5px;
 }
 .discovery-copy > small {
-  font-size: 6px;
+  font-size: 0.75rem;
   color: #7c8c6d;
   display: block;
   margin-top: 5px;
@@ -1198,7 +1201,7 @@ main {
   color: #9aa686;
 }
 .discovery-distance {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: #c8d5b6;
   position: relative;
   padding: 0 9px 0 0;
@@ -1209,7 +1212,7 @@ main {
 }
 .discovery-distance > small {
   display: block;
-  font-size: 5px;
+  font-size: 0.75rem;
   color: #78896b;
   margin-top: 3px;
 }
@@ -1225,14 +1228,14 @@ main {
   display: flex;
   gap: 8px;
   color: #899b79;
-  font-size: 7px;
+  font-size: 0.75rem;
   background: #22291f;
 }
 .result-footnote button {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 6px;
+  font-size: 0.75rem;
   padding: 4px 0 0;
   color: #aebc9b;
 }
@@ -1246,12 +1249,12 @@ main {
 }
 .empty-search strong {
   display: block;
-  font-size: 10px;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: #bdcdaa;
 }
 .empty-search p {
-  font-size: 8px;
+  font-size: 0.75rem;
   line-height: 1.9;
   margin: 9px auto 0;
   max-width: 200px;
@@ -1260,7 +1263,7 @@ main {
   padding: 0 15px 15px;
 }
 .biome-selector label {
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--muted);
   display: block;
   margin-bottom: 10px;
@@ -1271,11 +1274,11 @@ main {
   border-radius: 4px;
   padding: 7px 8px;
   width: 100%;
-  font-size: 10px;
+  font-size: 0.8125rem;
   margin-top: 6px;
 }
 .biome-selector p {
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--faint);
   line-height: 1.8;
 }
@@ -1288,7 +1291,7 @@ main {
   margin-top: 30px;
   padding: 18px 0;
   color: var(--faint);
-  font-size: 6px;
+  font-size: 0.75rem;
 }
 .page-footer > span {
   display: flex;
@@ -1296,7 +1299,7 @@ main {
   gap: 7px;
 }
 .page-footer > span:last-child {
-  font-size: 6px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   white-space: nowrap;
 }
@@ -1316,7 +1319,7 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 9px;
+  font-size: 0.75rem;
   line-height: 1.7;
 }
 .alert > button {
@@ -1349,7 +1352,7 @@ main {
   margin-bottom: 12px;
 }
 .selected-title h2 {
-  font-size: 15px;
+  font-size: 1.25rem;
   font-weight: 500;
   color: var(--text);
   margin-top: 5px;
@@ -1358,7 +1361,7 @@ main {
   margin-left: auto;
 }
 .selected-coordinate {
-  font-size: 10px;
+  font-size: 0.8125rem;
   color: var(--muted);
   display: flex;
   gap: 10px;
@@ -1371,12 +1374,12 @@ main {
   font-weight: 500;
 }
 .selected-panel > p {
-  font-size: 9px;
+  font-size: 0.75rem;
   margin: 10px 0;
   color: var(--muted);
 }
 .selected-panel > p.selected-caveat {
-  font-size: 8px;
+  font-size: 0.75rem;
   max-width: 800px;
   line-height: 1.8;
   color: var(--faint);
@@ -1393,7 +1396,7 @@ main {
   gap: 10px;
   margin-bottom: 24px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .collection-toolbar > span {
   margin-right: auto;
@@ -1427,7 +1430,7 @@ main {
   position: absolute;
   top: 12px;
   right: 12px;
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   padding: 4px 6px;
   background: #263021;
@@ -1436,14 +1439,14 @@ main {
   border-radius: 3px;
 }
 .world-card h2 {
-  font-size: 14px;
+  font-size: 1.125rem;
   font-weight: 500;
   margin: 17px 17px 7px;
 }
 .world-card > p {
   margin: 0 17px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 0.75rem;
   overflow-wrap: anywhere;
 }
 .world-card > span {
@@ -1451,7 +1454,7 @@ main {
   display: flex;
   justify-content: space-between;
   color: var(--accent);
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .empty-state {
   min-height: 460px;
@@ -1467,14 +1470,14 @@ main {
   background: var(--panel);
 }
 .empty-state h2 {
-  font-size: 23px;
+  font-size: 1.875rem;
   letter-spacing: -0.7px;
   font-weight: 400;
   margin: 24px 0 12px;
   color: var(--text);
 }
 .empty-state p {
-  font-size: 10px;
+  font-size: 0.8125rem;
   color: var(--muted);
   line-height: 1.9;
   max-width: 350px;
@@ -1495,11 +1498,11 @@ main {
   background: var(--panel);
 }
 .waypoint-list h2 {
-  font-size: 13px;
+  font-size: 1.0625rem;
   font-weight: 500;
 }
 .waypoint-list p {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-top: 7px;
 }
@@ -1528,20 +1531,20 @@ main {
   margin-bottom: 16px;
 }
 .settings-card h2 {
-  font-size: 17px;
+  font-size: 1.375rem;
   font-weight: 500;
   margin-bottom: 12px;
   letter-spacing: -0.4px;
 }
 .settings-card > p {
-  font-size: 10px;
+  font-size: 0.8125rem;
   color: var(--muted);
   line-height: 1.9;
   margin-bottom: 20px;
   max-width: 550px;
 }
 .settings-card > label {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--muted);
   display: flex;
   align-items: center;
@@ -1551,14 +1554,14 @@ main {
   padding: 8px;
   border: 1px solid var(--line);
   border-radius: 4px;
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .full-width {
   grid-column: 1/-1;
 }
 .status-tag {
   display: inline-block;
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   background: #3b3a2e;
   border: 1px solid #686346;
@@ -1578,7 +1581,7 @@ main {
   gap: 20px;
   border-bottom: 1px solid var(--line);
   padding: 15px 0;
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .compatibility-table > div:last-child {
   border: 0;
@@ -1591,7 +1594,7 @@ main {
 }
 .compatibility-table p {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 0.75rem;
   line-height: 1.8;
 }
 .ore-layout {
@@ -1608,7 +1611,7 @@ main {
   align-self: start;
 }
 .ore-materials > .eyebrow {
-  font-size: 7px;
+  font-size: 0.75rem;
   margin: 0 10px 17px;
 }
 .ore-materials > button {
@@ -1618,7 +1621,7 @@ main {
   gap: 10px;
   padding: 14px 10px;
   border-radius: 4px;
-  font-size: 10px;
+  font-size: 0.8125rem;
   color: var(--muted);
 }
 .ore-materials > button.active {
@@ -1639,19 +1642,19 @@ main {
   margin-bottom: 32px;
 }
 .ore-story h2 {
-  font-size: 26px;
+  font-size: 2.125rem;
   font-weight: 400;
   letter-spacing: -1px;
   margin: 22px 0 14px;
 }
 .ore-story h3 {
   font-weight: 500;
-  font-size: 13px;
+  font-size: 1.0625rem;
   color: var(--accent);
   margin-bottom: 13px;
 }
 .ore-story > p {
-  font-size: 11px;
+  font-size: 0.875rem;
   line-height: 2;
   color: var(--muted);
   max-width: 620px;
@@ -1661,7 +1664,7 @@ main {
   gap: 10px;
   align-items: center;
   color: var(--accent);
-  font-size: 9px;
+  font-size: 0.75rem;
   margin: 22px 0 30px;
 }
 .ore-honesty {
@@ -1672,11 +1675,11 @@ main {
   color: var(--accent);
 }
 .ore-honesty strong {
-  font-size: 10px;
+  font-size: 0.8125rem;
   font-weight: 500;
 }
 .ore-honesty p {
-  font-size: 9px;
+  font-size: 0.75rem;
   line-height: 1.9;
   color: var(--muted);
   margin-top: 7px;
@@ -1720,19 +1723,19 @@ dialog::backdrop {
 }
 .save-dialog h2,
 .help-content h2 {
-  font-size: 24px;
+  font-size: 1.9375rem;
   font-weight: 400;
   letter-spacing: -0.7px;
   margin: 10px 0;
 }
 .save-dialog > p {
-  font-size: 10px;
+  font-size: 0.8125rem;
   color: var(--muted);
   line-height: 1.9;
   margin-bottom: 24px;
 }
 .save-dialog > label {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--muted);
   width: 100%;
   margin-bottom: 20px;
@@ -1742,7 +1745,7 @@ dialog::backdrop {
   margin-top: 8px;
   border: 1px solid var(--line);
   padding: 12px;
-  font-size: 11px;
+  font-size: 0.875rem;
   width: 100%;
   border-radius: 4px;
   background: var(--panel);
@@ -1756,7 +1759,7 @@ dialog::backdrop {
   margin-bottom: 22px;
 }
 .help-content p {
-  font-size: 10px;
+  font-size: 0.8125rem;
   line-height: 2;
   color: var(--muted);
   margin: 18px 0;
@@ -1860,7 +1863,7 @@ html[data-theme='light'] .biome-selector label {
     height: 743px;
   }
   .exploration-layout {
-    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-columns: minmax(0, 1fr) 370px;
     gap: 25px;
   }
   .discovery-card {
@@ -1873,26 +1876,26 @@ html[data-theme='light'] .biome-selector label {
     margin-bottom: 34px;
   }
   .page-heading h1 {
-    font-size: 34px;
+    font-size: 2.75rem;
   }
   .nav-item {
-    font-size: 11px;
+    font-size: 0.875rem;
   }
   .seed-field input {
-    font-size: 13px;
+    font-size: 1.0625rem;
   }
 }
 @media (max-width: 1200px) {
   .app-shell {
-    grid-template-columns: 190px minmax(0, 1fr);
+    grid-template-columns: 240px minmax(0, 1fr);
   }
   .sidebar {
-    width: 190px;
+    width: 240px;
     padding-left: 12px;
     padding-right: 12px;
   }
   .brand {
-    font-size: 21px;
+    font-size: 1.6875rem;
     gap: 7px;
   }
   .brand-mark {
@@ -1900,11 +1903,11 @@ html[data-theme='light'] .biome-selector label {
     height: 34px;
   }
   .brand small {
-    font-size: 6px;
+    font-size: 0.75rem;
     letter-spacing: 1.7px;
   }
   .nav-item {
-    font-size: 9px;
+    font-size: 0.75rem;
     gap: 9px;
   }
   .guest-profile {
@@ -1937,14 +1940,14 @@ html[data-theme='light'] .biome-selector label {
   }
   .generate {
     padding: 0 10px;
-    font-size: 8px;
+    font-size: 0.75rem;
     gap: 6px;
   }
   .generate > svg:last-child {
     display: none;
   }
   .exploration-layout {
-    grid-template-columns: minmax(0, 1fr) 267px;
+    grid-template-columns: minmax(0, 1fr) 330px;
     gap: 15px;
   }
   .heading-actions {
@@ -1966,7 +1969,7 @@ html[data-theme='light'] .biome-selector label {
     display: none;
   }
   .page-footer > span:nth-child(2) {
-    font-size: 5px;
+    font-size: 0.75rem;
   }
   .world-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1976,7 +1979,7 @@ html[data-theme='light'] .biome-selector label {
     gap: 12px;
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
   .world-form {
     flex-wrap: wrap;
   }
@@ -2000,7 +2003,7 @@ html[data-theme='light'] .biome-selector label {
   }
   .generate {
     margin-top: 5px;
-    min-height: 38px;
+    min-height: 44px;
     flex: 1;
   }
   .exploration-layout {
@@ -2041,7 +2044,7 @@ html[data-theme='light'] .biome-selector label {
     padding: 25px;
   }
   .map-footer {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .field-note p {
     max-width: none;
@@ -2055,7 +2058,7 @@ html[data-theme='light'] .biome-selector label {
   .page-footer > span:nth-child(2) {
     order: 3;
     width: 100%;
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .settings-grid {
     gap: 15px;
@@ -2071,7 +2074,7 @@ html[data-theme='light'] .biome-selector label {
     padding: 25px;
   }
   .ore-story h2 {
-    font-size: 23px;
+    font-size: 1.875rem;
   }
 }
 @media (max-width: 760px) {
@@ -2081,7 +2084,7 @@ html[data-theme='light'] .biome-selector label {
   .sidebar {
     transform: translateX(-100%);
     transition: transform 0.2s;
-    width: 222px;
+    width: 260px;
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -2096,10 +2099,10 @@ html[data-theme='light'] .biome-selector label {
     z-index: 19;
   }
   .brand {
-    font-size: 24px;
+    font-size: 1.9375rem;
   }
   .nav-item {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .guest-profile {
     margin-left: -16px;
@@ -2117,11 +2120,11 @@ html[data-theme='light'] .biome-selector label {
     gap: 13px;
   }
   .breadcrumb {
-    font-size: 8px;
+    font-size: 0.75rem;
     gap: 8px;
   }
   .local-badge {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .page-content {
     padding: 24px 18px 0;
@@ -2131,17 +2134,17 @@ html[data-theme='light'] .biome-selector label {
     align-items: center;
   }
   .page-heading h1 {
-    font-size: 25px;
+    font-size: 2rem;
   }
   .page-heading p {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .page-heading .eyebrow {
-    font-size: 6px;
+    font-size: 0.75rem;
     letter-spacing: 1.2px;
   }
   .heading-actions .button {
-    font-size: 8px;
+    font-size: 0.75rem;
     padding: 0 9px;
     min-height: 32px;
     gap: 5px;
@@ -2158,7 +2161,7 @@ html[data-theme='light'] .biome-selector label {
   }
   .world-form label > span:first-child,
   .position-field > span {
-    font-size: 6px;
+    font-size: 0.75rem;
     letter-spacing: 1px;
   }
   .position-field {
@@ -2166,7 +2169,7 @@ html[data-theme='light'] .biome-selector label {
   }
   .position-field input {
     width: 31px;
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .position-field > div {
     gap: 7px;
@@ -2174,7 +2177,7 @@ html[data-theme='light'] .biome-selector label {
   .generate {
     flex: 0;
     min-width: 125px;
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .atlas-map {
     height: 420px;
@@ -2186,16 +2189,16 @@ html[data-theme='light'] .biome-selector label {
     height: 34px;
   }
   .dimension-tabs button {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .field-note {
     padding: 14px 12px;
   }
   .field-note strong {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .field-note p {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .results-list {
     grid-template-columns: 1fr 1fr;
@@ -2205,23 +2208,23 @@ html[data-theme='light'] .biome-selector label {
     padding: 13px 7px;
   }
   .discovery-copy > strong {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .discovery-icon {
     width: 27px;
     height: 31px;
   }
   .discovery-copy > span {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .discovery-copy > small {
-    font-size: 5px;
+    font-size: 0.75rem;
   }
   .discovery-distance {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .discovery-distance small {
-    font-size: 5px;
+    font-size: 0.75rem;
   }
   .page-footer {
     margin-top: 24px;
@@ -2231,23 +2234,23 @@ html[data-theme='light'] .biome-selector label {
   }
   .collection-toolbar > span {
     width: 100%;
-    font-size: 9px;
+    font-size: 0.75rem;
     margin-bottom: 8px;
   }
   .world-grid {
     gap: 13px;
   }
   .world-card h2 {
-    font-size: 12px;
+    font-size: 1rem;
   }
   .world-card-art {
     height: 115px;
   }
   .world-card > p {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .empty-state h2 {
-    font-size: 20px;
+    font-size: 1.625rem;
   }
   .settings-grid {
     grid-template-columns: 1fr;
@@ -2257,7 +2260,7 @@ html[data-theme='light'] .biome-selector label {
   }
   .compatibility-table p {
     grid-column: 1/-1;
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .ore-layout {
     grid-template-columns: 1fr;
@@ -2275,7 +2278,7 @@ html[data-theme='light'] .biome-selector label {
   .ore-materials > button {
     width: auto;
     padding: 9px;
-    font-size: 9px;
+    font-size: 0.75rem;
     gap: 6px;
   }
   .ore-materials > button > svg:last-child {
@@ -2285,7 +2288,7 @@ html[data-theme='light'] .biome-selector label {
     padding: 25px;
   }
   .ore-story h2 {
-    font-size: 23px;
+    font-size: 1.875rem;
   }
   .waypoint-list article {
     padding: 14px;
@@ -2293,17 +2296,17 @@ html[data-theme='light'] .biome-selector label {
     flex-wrap: wrap;
   }
   .waypoint-list h2 {
-    font-size: 11px;
+    font-size: 0.875rem;
   }
   .waypoint-list p {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .waypoint-list-icon {
     padding: 10px;
   }
   .waypoint-list article > .button {
     min-height: 30px;
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .browser-note {
     margin-bottom: 15px;
@@ -2325,26 +2328,26 @@ html[data-theme='light'] .biome-selector label {
     padding: 0 13px;
   }
   .local-badge {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .topbar-actions {
     gap: 8px;
   }
   .breadcrumb {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .page-heading h1 {
-    font-size: 23px;
+    font-size: 1.875rem;
   }
   .heading-actions .button {
-    font-size: 7px;
+    font-size: 0.75rem;
     padding: 0 7px;
   }
   .heading-actions .button svg {
     width: 12px;
   }
   .page-heading p {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .world-form {
     padding: 12px;
@@ -2357,10 +2360,10 @@ html[data-theme='light'] .biome-selector label {
     min-width: 100px;
   }
   .version-field select {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .seed-field input {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .position-field {
     min-width: 160px;
@@ -2368,7 +2371,7 @@ html[data-theme='light'] .biome-selector label {
   .generate {
     min-width: 105px;
     padding: 0 9px;
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .generate svg {
     width: 13px;
@@ -2380,10 +2383,10 @@ html[data-theme='light'] .biome-selector label {
     height: 370px;
   }
   .map-footer {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .map-footer > button {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .legend-dot {
     margin-left: 5px;
@@ -2392,13 +2395,13 @@ html[data-theme='light'] .biome-selector label {
     grid-template-columns: 1fr;
   }
   .discovery-copy > strong {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .discovery-copy > span {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .discovery-copy > small {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .discovery-card {
     padding: 15px 10px;
@@ -2409,31 +2412,31 @@ html[data-theme='light'] .biome-selector label {
     width: 35px;
   }
   .discovery-distance {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .discovery-distance small {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .world-grid {
     grid-template-columns: 1fr;
   }
   .map-coordinates {
-    font-size: 6px;
+    font-size: 0.75rem;
     padding: 7px 8px;
   }
   .map-scale {
-    font-size: 6px;
+    font-size: 0.75rem;
     left: 12px;
   }
   .map-scale > span {
     width: 45px;
   }
   .page-footer > span:nth-child(2) {
-    font-size: 5px;
+    font-size: 0.75rem;
     gap: 4px;
   }
   .selected-coordinate {
-    font-size: 9px;
+    font-size: 0.75rem;
     gap: 6px;
   }
   .selected-coordinate > span {
@@ -2441,144 +2444,144 @@ html[data-theme='light'] .biome-selector label {
   }
 }
 .nav-item {
-  font-size: 12px;
+  font-size: 1rem;
   height: 44px;
 }
 .workspace-label,
 .sidebar-world-heading {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .current-world {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .current-world small,
 .guest-profile small {
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .browser-note strong {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .browser-note p {
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .browser-note > span:last-child {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .guest-profile {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .breadcrumb,
 .local-badge {
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .page-heading p {
-  font-size: 12px;
+  font-size: 1rem;
 }
 .button {
-  font-size: 11px;
-  min-height: 38px;
+  font-size: 0.875rem;
+  min-height: 44px;
 }
 .world-form label > span:first-child,
 .position-field > span {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .seed-field input {
-  font-size: 13px;
+  font-size: 1.0625rem;
 }
 .version-field select,
 .position-field input {
-  font-size: 12px;
+  font-size: 1rem;
 }
 .dimension-tabs button {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .map-profile {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .map-caption {
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .map-coordinates,
 .map-scale {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .map-bottom-note {
-  font-size: 7px;
+  font-size: 0.75rem;
 }
 .map-footer,
 .map-footer > button {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .field-note strong {
-  font-size: 12px;
+  font-size: 1rem;
 }
 .field-note p {
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .field-note-badge {
-  font-size: 7px;
+  font-size: 0.75rem;
 }
 .discoveries-heading h2 {
-  font-size: 14px;
+  font-size: 1.125rem;
 }
 .discoveries-heading .eyebrow {
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .filter-chips button {
-  font-size: 9px;
+  font-size: 0.75rem;
   min-height: 28px;
 }
 .search-options > label {
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .search-options select {
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .search-button {
-  font-size: 10px;
+  font-size: 0.8125rem;
 }
 .result-summary,
 .result-summary > label {
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .discovery-copy > strong {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .discovery-copy > span {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .discovery-copy > small {
-  font-size: 8px;
+  font-size: 0.75rem;
   line-height: 1.7;
 }
 .discovery-distance {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .discovery-distance > small {
-  font-size: 7px;
+  font-size: 0.75rem;
 }
 .discovery-card {
   padding-top: 16px;
   padding-bottom: 16px;
 }
 .result-footnote {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .result-footnote button {
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .page-footer,
 .page-footer > span:last-child {
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .alert {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .biome-selector label {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .biome-selector p {
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .search-radius-overlay {
   position: absolute;
@@ -2596,82 +2599,98 @@ html[data-theme='light'] .biome-selector label {
 }
 @media (max-width: 1200px) {
   .nav-item {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .current-world {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .button {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .world-form label > span:first-child,
   .position-field > span {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .position-field input {
-    font-size: 11px;
+    font-size: 0.875rem;
   }
   .map-footer,
   .map-footer > button {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 760px) {
   .nav-item {
-    font-size: 12px;
+    font-size: 1rem;
   }
   .breadcrumb,
   .local-badge {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .heading-actions .button {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .world-form label > span:first-child,
   .position-field > span {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .seed-field input {
-    font-size: 12px;
+    font-size: 1rem;
   }
   .version-field select {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .generate {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .position-field input {
-    font-size: 11px;
+    font-size: 0.875rem;
   }
   .dimension-tabs button {
-    font-size: 10px;
+    font-size: 0.8125rem;
   }
   .map-footer,
   .map-footer > button {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .map-caption {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .map-coordinates,
   .map-scale {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .map-bottom-note {
-    font-size: 5px;
+    font-size: 0.75rem;
   }
   .field-note p {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .field-note strong {
-    font-size: 11px;
+    font-size: 0.875rem;
   }
   .page-footer > span:nth-child(2) {
-    font-size: 6px;
+    font-size: 0.75rem;
     flex-wrap: wrap;
+  }
+}
+@media (max-width: 760px) {
+  .breadcrumb-root,
+  .breadcrumb > svg {
+    display: none;
+  }
+  .breadcrumb,
+  .local-badge {
+    white-space: nowrap;
+  }
+  .world-form input,
+  .world-form select,
+  .biome-selector select,
+  .save-dialog input {
+    font-size: 1rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

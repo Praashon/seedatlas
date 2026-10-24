@@ -14,4 +14,5 @@
 *.wasm binary
 *.png binary
 native/cubiomes/** -whitespace
+native/cubiomes-26/** -whitespace
 apps/web/public/licenses/** -whitespace

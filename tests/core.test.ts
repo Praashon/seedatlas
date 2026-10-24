@@ -38,12 +38,18 @@ describe('coordinates and bounds', () => {
 });
 describe('capability honesty', () => {
   it('never inherits a previous version adapter', () => {
-    for (const version of ['26.1', '26.2', '26.3', '26.4 Snapshot 5']) {
+    for (const version of ['26.1', '26.3', '26.4 Snapshot 5']) {
       expect(getCapability(version).biomes).toBe('unsupported');
       expect(() => requireEngine(version)).toThrow();
     }
     expect(() => getCapability('unknown')).toThrow();
     expect(VersionCapabilityRegistry.every(item => item.ores === 'unsupported')).toBe(true);
     expect(VersionCapabilityRegistry.some(item => item.biomes === 'exact-validated')).toBe(false);
+  });
+  it('registers Java 26.2 with its own engine and provenance', () => {
+    expect(requireEngine('26.2')).toBe(262);
+    expect(getCapability('26.2').biomes).toBe('predicted');
+    expect(getCapability('26.2').engineModule).toBe('/engine/atlas26.js');
+    expect(getCapability('26.2').adapter).not.toBe(getCapability('1.21.3').adapter);
   });
 });

@@ -39,6 +39,7 @@ export interface VersionCapability {
   structures: Accuracy;
   ores: Accuracy;
   adapter: string | null;
+  engineModule: string | null;
   testCoverage: string;
   limitations: string[];
   minimumCompanionVersion: string | null;

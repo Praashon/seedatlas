@@ -15,7 +15,7 @@
     "format:check": "prettier --check apps/web/src packages docs README.md",
     "format": "prettier --write apps/web/src packages docs README.md",
     "lint": "eslint apps/web/src packages",
-    "build:wasm": "node scripts/build-wasm.mjs"
+    "build:wasm": "node scripts/build-wasm.mjs && node scripts/build-wasm.mjs --java26"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

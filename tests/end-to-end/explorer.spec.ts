@@ -8,6 +8,9 @@ test('computes locally, saves independent worlds and preserves waypoint progress
   await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
   await expect(page.locator('.discovery-card').first()).toBeVisible();
   await expect(page.getByText('Drawing your world…')).toBeHidden();
+  expect(await page.locator('.nav-item').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(13);
+  expect(await page.locator('.discovery-copy > strong').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(14);
+  expect(await page.locator('.discovery-copy > small').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(12);
   await page.screenshot({ path: `.artifacts/${testInfo.project.name}-explorer.png`, fullPage: true });
   await page.getByRole('button', { name: 'Save this world' }).click();
   await page.getByRole('textbox', { name: 'World name' }).fill('My test expedition');
@@ -32,6 +35,26 @@ test('computes locally, saves independent worlds and preserves waypoint progress
   await expect(page.getByRole('heading', { name: 'First stop' })).toBeVisible();
   await page.screenshot({ path: `.artifacts/${testInfo.project.name}-saved.png`, fullPage: true });
   expect(errors).toEqual([]);
+});
+
+test('explores Java 26.2 sulfur caves in the browser', async ({ page }, testInfo) => {
+  await page.goto('/');
+  await expect(page.getByRole('combobox', { name: 'Game version' })).toHaveValue('26.2');
+  await expect(page.getByRole('option', { name: 'Java 26.2', exact: true })).toHaveCount(1);
+  await page.getByRole('textbox', { name: 'World seed' }).fill('9692138235802224');
+  await page.getByRole('button', { name: 'Explore seed' }).click();
+  await expect(page.getByText(/\d+ predictions found/)).toBeVisible();
+  await expect(page.locator('.discovery-card').filter({ hasText: 'X 176' }).first()).toBeVisible();
+  if (testInfo.project.name === 'mobile') await page.getByRole('button', { name: 'Open navigation' }).click();
+  await page.getByRole('button', { name: 'Biome explorer', exact: true }).click();
+  await page.getByRole('combobox', { name: 'Biome', exact: true }).selectOption('187');
+  await expect(page.getByRole('spinbutton', { name: 'Player Y', exact: true })).toHaveValue('0');
+  await page.getByRole('button', { name: 'Find nearby', exact: true }).click();
+  await expect(page.getByText('1 sampled match found', { exact: true })).toBeVisible();
+  await expect(page.locator('.discovery-card').filter({ hasText: 'Sulfur Caves' })).toHaveCount(1);
+  await expect(page.getByRole('alert')).toHaveCount(0);
+  await page.screenshot({ path: `.artifacts/${testInfo.project.name}-java26.png`, fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)).toBe(false);
 });
 
 test('handles dimensions, unsupported versions and full precision seeds honestly', async ({ page }, testInfo) => {

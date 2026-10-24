@@ -2,7 +2,7 @@
 import type { Discovery, EngineRequest, EngineResponse } from '../../../../packages/contracts';
 import {
   DIMENSION_IDS,
-  ENGINE_FINGERPRINT,
+  getCapability,
   requireEngine,
   splitSeed,
   STRUCTURES,
@@ -15,8 +15,8 @@ const scope = self as unknown as DedicatedWorkerGlobalScope;
 function send(message: EngineResponse) {
   scope.postMessage(message);
 }
-async function load(): Promise<AtlasModule> {
-  const url = new URL('/engine/atlas.js', scope.location.origin).href;
+async function load(engineModule: string): Promise<AtlasModule> {
+  const url = new URL(engineModule, scope.location.origin).href;
   const module = (await import(/* @vite-ignore */ url)) as {
     default: (options: { locateFile: (file: string) => string }) => Promise<AtlasModule>;
   };
@@ -24,13 +24,22 @@ async function load(): Promise<AtlasModule> {
     locateFile: (file) => new URL('/engine/' + file, scope.location.origin).href,
   });
 }
-let engine: Promise<AtlasModule> | undefined;
+const engines = new Map<string, Promise<AtlasModule>>();
 scope.onmessage = async (event: MessageEvent<EngineRequest>) => {
   const request = event.data;
   try {
     const version = requireEngine(request.version);
+    const capability = getCapability(request.version);
+    if (!capability.engineModule || !capability.adapter)
+      throw new Error('No engine is registered for this game version.');
+    const fingerprint = capability.adapter;
     validatePosition(request, request.dimension);
-    const core = await (engine ??= load());
+    let engine = engines.get(capability.engineModule);
+    if (!engine) {
+      engine = load(capability.engineModule);
+      engines.set(capability.engineModule, engine);
+    }
+    const core = await engine;
     const [low, high] = splitSeed(request.seed);
     if (!core._atlas_init(version, DIMENSION_IDS[request.dimension], low, high))
       throw new Error('The browser engine rejected this generation profile.');
@@ -88,7 +97,7 @@ scope.onmessage = async (event: MessageEvent<EngineRequest>) => {
       distance: Math.hypot(x - request.x, z - request.z),
       accuracy: 'predicted',
       source: 'cubiomes-wasm',
-      fingerprint: ENGINE_FINGERPRINT,
+      fingerprint,
       version: request.version,
       complete: true,
       limitations: [

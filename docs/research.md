@@ -12,6 +12,7 @@ Research date: 2026-10-24. These are implementation boundaries, not a claim that
 - [Fabric developer documentation](https://docs.fabricmc.net/): relevant for the later optional companion, not needed for browser exploration.
 - [Cubiomes source and README](https://github.com/Cubitect/cubiomes): inspected version enum, generator, placement and biome APIs. Upstream enumerates the 1.21 winter drop as its newest version. It cannot be treated as a 26.x implementation. It explicitly documents structure false positives from terrain conditions and does not generate actual ore blocks.
 - [SeedForge](https://github.com/fwsoapy/seedforge): inspected browser-worker architecture, binding/build script and patch provenance. Its newer patches are not incorporated. Transitive biome table provenance and independent vanilla fixtures need review before reuse.
+- [xpple/Cubiomes](https://github.com/xpple/cubiomes/tree/d934de1d4e5e71db0b789296241f929a50306504): inspected its MIT license, 26.2 biome table selection, sulfur-cave registration, structure configuration, and End-ring regression. This primary source is now compiled as a separate Java 26.2 browser adapter. Public structure IDs are explicitly mapped because the fork inserts a Nether Fossil enum entry. Legacy adapters retain their original engine.
 - [Minecraft EULA](https://www.minecraft.net/en-us/eula) and [usage guidelines](https://www.minecraft.net/en-us/usage-guidelines): reviewed for the distribution boundary. No Minecraft binaries, original assets, game source, or branding are bundled. This project is unofficial and not affiliated with Mojang or Microsoft.
 
 ## Accuracy policy
@@ -26,14 +27,16 @@ Exact ores require terrain, carvers, aquifers, replacement blocks, feature order
 
 ## Registry
 
-| Version         | Biomes / structures | Ores        | Reason                                                            |
-| --------------- | ------------------- | ----------- | ----------------------------------------------------------------- |
-| 1.18.2          | Predicted, upstream | Unsupported | Upstream binding regression fixture, no independent vanilla suite |
-| 1.20.6          | Predicted, upstream | Unsupported | No project-owned vanilla reference suite                          |
-| 1.21.3          | Predicted, upstream | Unsupported | No project-owned vanilla reference suite                          |
-| 26.1            | Unsupported         | Unsupported | Version-matched adapter and fixtures pending                      |
-| 26.2            | Unsupported         | Unsupported | Sulfur-cave parameters and fixtures pending                       |
-| 26.3            | Unsupported         | Unsupported | Registry, biome and abandoned-camp changes                        |
-| 26.4 Snapshot 5 | Unsupported         | Unsupported | Experimental game version; ore changes                            |
+| Version         | Biomes / structures   | Ores        | Reason                                                                                                       |
+| --------------- | --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------ |
+| 1.18.2          | Predicted, upstream   | Unsupported | Upstream binding regression fixture, no independent vanilla suite                                            |
+| 1.20.6          | Predicted, upstream   | Unsupported | No project-owned vanilla reference suite                                                                     |
+| 1.21.3          | Predicted, upstream   | Unsupported | No project-owned vanilla reference suite                                                                     |
+| 26.1            | Unsupported           | Unsupported | Version-matched adapter and fixtures pending                                                                 |
+| 26.2            | Predicted, xpple fork | Unsupported | Sulfur caves, height sampling, structure and dimension regressions; comprehensive vanilla validation pending |
+| 26.3            | Unsupported           | Unsupported | Registry, biome and abandoned-camp changes                                                                   |
+| 26.4 Snapshot 5 | Unsupported           | Unsupported | Experimental game version; ore changes                                                                       |
 
 Data pack and DataVersion values remain null unless checked against the corresponding official version metadata. No fabricated capability counts are used.
+
+Java 26.2 coverage includes the fork's primary End-ring reference and a published sulfur-cave/snowy-village/trial-chamber case from [Seeder](https://mcseeder.com/versions/26.2/). These cross-engine checks are not a comprehensive independently generated vanilla fixture suite. Java 26.2 is available in the interface, with results labeled predicted. Other 26.x entries are not enabled by association.

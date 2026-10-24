@@ -15,6 +15,8 @@ export const biomeLabel = (name: string): string =>
     .replaceAll('_', ' ')
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 export function biomeColor(name: string): [number, number, number] {
+  if (/sulfur/.test(name)) return [167, 172, 79];
+  if (/pale_garden/.test(name)) return [165, 176, 152];
   if (/frozen|snow|ice|grove/.test(name) && !/cherry/.test(name)) return [192, 207, 191];
   if (/ocean/.test(name)) return /deep/.test(name) ? [48, 80, 84] : [69, 105, 106];
   if (/river/.test(name)) return [89, 131, 128];

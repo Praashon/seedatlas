@@ -64,6 +64,7 @@ export function validateBounds(radius: number, resolution: number): void {
     throw new Error('This scan is too large. Increase sampling spacing or reduce radius.');
 }
 export const ENGINE_FINGERPRINT = 'cubiomes-e61f9058-seedatlas-abi1';
+export const JAVA_26_2_FINGERPRINT = 'cubiomes-xpple-d934de1d-seedatlas-abi1';
 const dimensions = ['overworld', 'nether', 'end'] as const;
 function capability(id: string, engineVersion: number | null, reason: string): VersionCapability {
   return {
@@ -76,7 +77,10 @@ function capability(id: string, engineVersion: number | null, reason: string): V
     biomes: engineVersion === null ? 'unsupported' : 'predicted',
     structures: engineVersion === null ? 'unsupported' : 'predicted',
     ores: 'unsupported',
-    adapter: engineVersion === null ? null : ENGINE_FINGERPRINT,
+    adapter:
+      engineVersion === null ? null : id === '26.2' ? JAVA_26_2_FINGERPRINT : ENGINE_FINGERPRINT,
+    engineModule:
+      engineVersion === null ? null : id === '26.2' ? '/engine/atlas26.js' : '/engine/atlas.js',
     testCoverage:
       'Seed and coordinate unit tests; upstream regression fixture. Independent vanilla suite pending.',
     limitations: [reason, 'Exact ore generation is not implemented.'],
@@ -84,6 +88,11 @@ function capability(id: string, engineVersion: number | null, reason: string): V
   };
 }
 export const VersionCapabilityRegistry: readonly VersionCapability[] = [
+  capability(
+    '26.2',
+    262,
+    'Java 26.2 browser adapter with sulfur caves. Predictions include upstream regression coverage; terrain checks and comprehensive vanilla validation remain incomplete.',
+  ),
   capability(
     '1.21.3',
     27,
@@ -100,7 +109,6 @@ export const VersionCapabilityRegistry: readonly VersionCapability[] = [
     'Upstream prediction. Includes the seed 262 regression example, not full vanilla validation.',
   ),
   capability('26.1', null, 'The version-matched browser adapter has not been validated yet.'),
-  capability('26.2', null, 'Sulfur-cave generation requires a new, validated browser adapter.'),
   capability(
     '26.3',
     null,

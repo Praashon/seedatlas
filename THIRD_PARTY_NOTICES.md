@@ -3,6 +3,7 @@
 | Component | License | Source and distribution |
 | --- | --- | --- |
 | Cubiomes | MIT, copyright 2020 Cubitect | https://github.com/Cubitect/cubiomes, commit e61f90580cbdd883214a8054670dacae655e59c0; unmodified source in native/cubiomes, compiled JS/WASM in apps/web/public/engine |
+| Cubiomes Java 26.2 adapter | MIT, original copyright 2020 Cubitect; active fork maintained by xpple | https://github.com/xpple/cubiomes, commit d934de1d4e5e71db0b789296241f929a50306504; selected source in native/cubiomes-26, separate atlas26 JS/WASM; original license retained |
 | Poppins | SIL Open Font License 1.1, copyright 2020 The Poppins Project Authors | https://github.com/itfoundry/Poppins; bundled locally via @fontsource/poppins, full license in apps/web/public/licenses |
 | Lucide React | ISC, copyright 2026 Lucide Icons and Contributors | https://github.com/lucide-icons/lucide; full notice in apps/web/public/licenses |
 | React / React DOM | MIT | https://github.com/facebook/react; full notice in apps/web/public/licenses |

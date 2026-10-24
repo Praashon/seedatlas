@@ -27,7 +27,7 @@ Serve `apps/web/dist` on any static HTTPS host, or on localhost. Root-path hosti
 ## What works
 
 - Guest exploration with exact signed 64-bit seed parsing and Java text hashing.
-- Browser biome sampling and bounded, biome-checked structure predictions for explicitly listed Java 1.18.2, 1.20.6, and 1.21.3 adapters.
+- Browser biome sampling and bounded, biome-checked structure predictions for Java 26.2, 1.18.2, 1.20.6, and 1.21.3. Java 26.2 is the default for new worlds and includes sulfur caves and pale gardens.
 - Overworld, Nether, and End; height-aware biome queries; coordinate validation.
 - Interactive map, coordinate grid, search-radius overlay, pan, zoom, and keyboard navigation.
 - Structure filters, nearest sampled biome, incremental results and cancellation.
@@ -41,7 +41,9 @@ The starting seed `262` is an editable example. Every discovery shown is calcula
 
 **Enabled generation is predicted, not independently validated against vanilla reference worlds.** Cubiomes cannot confirm every terrain-dependent structure, its full layout, or its Y coordinate. Biomes are sampled at the chosen height and spacing; a missing sample is not proof a biome does not exist nearby. A map is a biome plane, not a terrain-height map. Distances are straight-line horizontal distances.
 
-**Java 26.1, 26.2, 26.3 and 26.4 Snapshot 5 are registered but unsupported.** They never fall back to an older generator. Upstream Cubiomes does not implement these versions. Adding independently validated, properly licensed browser adapters is the next engine milestone. No mod installation is used as a workaround.
+**Java 26.2 is available through a separately pinned MIT-licensed xpple/Cubiomes browser adapter.** Sulfur-cave generation, height-dependent samples, structure positions, the End-ring regression and dimension isolation have regression coverage. Results are still predictions, with the same terrain and reference-validation limitations described above. Choosing sulfur caves starts sampling at Y 0.
+
+**Java 26.1, 26.3 and 26.4 Snapshot 5 remain unsupported.** They never fall back to an older generator. The legacy upstream and Java 26.2 engines are separate binaries with separate provenance. No mod installation is needed.
 
 Exact ore coordinates, save-file inspection, accounts, synchronization, the Fabric companion, precision runner, custom data packs, and non-default presets are not implemented. The ore guide is historical distribution guidance, not a 26.x ore chart. No fake account or mod-connection controls are provided.
 
@@ -74,7 +76,7 @@ The generated engine is committed so normal frontend development needs no C comp
 npm run build:wasm
 ```
 
-The build also recognizes a local SDK in `.tools/emsdk`. Upstream source is pinned and vendored under `native/cubiomes`; see [provenance](native/UPSTREAM.md). No unverified 26.x patches are included.
+The build also recognizes a local SDK in `.tools/emsdk`. Legacy source is pinned under `native/cubiomes`; Java 26.2 source is pinned separately under `native/cubiomes-26`. See [engine provenance](native/UPSTREAM.md) and [26.2 provenance](native/cubiomes-26/PROVENANCE.md). The build command regenerates both binaries.
 
 ## Optional API and database
 

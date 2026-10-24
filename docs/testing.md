@@ -8,7 +8,9 @@
 - Rust tests ensure the service does not advertise unimplemented account, sync or precision features.
 - Production browser coverage disconnects the network, reloads the precached atlas, and computes a different seed entirely offline. Desktop and mobile screenshots are reviewed for layout.
 
-Executed locally: TypeScript checks, ESLint, Prettier checks, production build, 21 unit/WASM tests, six desktop/mobile browser tests, one production offline test, one Rust unit test, rustfmt and Clippy with warnings denied. npm dependency audit reported zero vulnerabilities. This is not a complete production security or accessibility audit.
+The Java 26.2 update adds a separate binary regression suite for sulfur-cave and surface-height samples, published village/trial-chamber predictions, the primary fork End-ring case, stable structure IDs, Nether isolation and full-range seeds. Browser coverage includes 26.2 sulfur-cave search, larger computed font sizes, desktop/mobile layouts and a 125 percent display-scaling regression. These remain prediction-level checks, not comprehensive vanilla validation.
+
+Executed locally: TypeScript checks, ESLint, Prettier checks, production build, unit/WASM suites, desktop/mobile browser tests, the production offline test, one Rust unit test, rustfmt and Clippy with warnings denied. The initial GitHub Actions run also verified the PostgreSQL migration on a clean PostgreSQL 17.11 instance. npm dependency audit reported zero vulnerabilities. This is not a complete production security or accessibility audit.
 
 These are regression tests, not independent vanilla generation validation. Exact world-generation status remains unavailable.
 
